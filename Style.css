@@ -9,9 +9,3 @@
 body{
     background-color: #a8a8fb91
 }
-
-#gameCanvas{
-    width: 100%;
-    height: 100%;
-    border: 2px solid #c450dc;
-}

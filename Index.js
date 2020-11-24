@@ -1,9 +1,10 @@
 
 var ctx, canvas, ballX = 50, ballY = 50;
 window.onload = function () {
-    drawEverything();
+    setInterval(drawEverything, 200);
 }
 function drawEverything(ctx) {
+    ballX += 5
     canvas = document.getElementById('gameCanvas');
     ctx = canvas.getContext('2d');
     //canvas
@@ -12,7 +13,7 @@ function drawEverything(ctx) {
     // console.log("Draw fired.");
     //Ball
     ctx.beginPath();
-    ctx.arc(ballX, ballY, 20, 0, 2 * Math.PI);
+    ctx.arc(ballX, ballY, 7, 0, 2 * Math.PI);
     ctx.fillStyle = "RED"
     ctx.fill();
 }
