@@ -4,7 +4,6 @@ var leftPaddleY = 200, rightPaddleY = 100;
 var x = 0;
 var player1Score = 0, player2Score = 0;
 const paddleHeight = 100, paddleWidth = 10;
-// audio1.play();
 var audio1 = document.getElementById("myAudio1");
 canvas = document.getElementById('gameCanvas');
 ctx = canvas.getContext('2d');
@@ -62,6 +61,7 @@ function movingThings() {
     ballY += changeInBallY;
     if (ballX >= canvas.width - 10) {
         if (ballY > rightPaddleY && ballY < rightPaddleY + paddleHeight) {
+            audio1.play();
             changeInballX *= -1;
         } else {
             player1Score++;
@@ -70,9 +70,8 @@ function movingThings() {
     }
     if (ballX <= 10) {
         if (ballY > leftPaddleY && ballY < leftPaddleY + paddleHeight) {
+            audio1.play();
             changeInballX *= -1;
-            var deltaY = changeInBallY - leftPaddleY + paddleHeight / 2
-            changeInBallY = deltaY * .3
         } else {
             player2Score++;
             ballReset();
