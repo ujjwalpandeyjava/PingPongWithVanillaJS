@@ -1,7 +1,7 @@
 
 var ctx, canvas, ballX = 50, ballY = 50, changeInballX = 15, changeInBallY = 10;
 var leftPaddleY = 200, rightPaddleY = 100;
-var player1Score = 0, player2Score = 0;
+var player1Score = 0, player2Score = 0; const winning_score = 3;
 const paddleHeight = 100, paddleWidth = 10;
 var audio1 = document.getElementById("myAudio1");
 canvas = document.getElementById('gameCanvas');
@@ -65,15 +65,7 @@ function movingThings() {
     rightPaddleAI();
     ballX += changeInballX;
     ballY += changeInBallY;
-    if (ballX >= canvas.width - 10) {
-        if (ballY > rightPaddleY && ballY < rightPaddleY + paddleHeight) {
-            audio1.play();
-            changeInballX *= -1;
-        } else {
-            player1Score++;
-            ballReset();
-        }
-    }
+    //Left paddle
     if (ballX <= 10) {
         if (ballY > leftPaddleY && ballY < leftPaddleY + paddleHeight) {
             audio1.play();
@@ -83,7 +75,16 @@ function movingThings() {
             ballReset();
         }
     }
-
+    //Right paddle
+    if (ballX >= canvas.width - 10) {
+        if (ballY > rightPaddleY && ballY < rightPaddleY + paddleHeight) {
+            audio1.play();
+            changeInballX *= -1;
+        } else {
+            player1Score++;
+            ballReset();
+        }
+    }
 
     if (ballY >= canvas.height - 5) {
         changeInBallY *= -1;
@@ -109,13 +110,4 @@ function ballReset() {
     changeInballX *= -1;
     ballX = canvas.width / 2;
     ballY = canvas.height / 2;
-    if (player1Score >= 3) {
-        
-    /*
-ctx.fillText(player1Score, 150, 100)
-ctx.fillText(player2Score, canvas.width - 150, 100)*/
-    }
-    else if (player2Score >= 3) {
-
-    }
 } 
